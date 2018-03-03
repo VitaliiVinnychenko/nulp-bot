@@ -136,7 +136,7 @@ def show_today_schedule(message):
         keyboard = InlineKeyboardMarkup()
 
         for item in main_menu:
-            keyboard.add(InlineKeyboardButton(text=item, callback_data=item))
+            keyboard.add(InlineKeyboardButton(text=item['name'], callback_data=item['value']))
 
         if weekday == 5 or weekday == 6:
             delete_message(message)
@@ -186,7 +186,7 @@ def show_tomorrow_schedule(message):
             keyboard = InlineKeyboardMarkup()
 
             for item in main_menu:
-                keyboard.add(InlineKeyboardButton(text=item, callback_data=item))
+                keyboard.add(InlineKeyboardButton(text=item['name'], callback_data=item['value']))
 
             if weekday == 5 or weekday == 6:
                 delete_message(message)
