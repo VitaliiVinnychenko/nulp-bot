@@ -1,4 +1,4 @@
-import datetime, logging
+import datetime, logging, json
 from html_parser import get_schedule
 from handlers import *
 from constants import db_conn, days
