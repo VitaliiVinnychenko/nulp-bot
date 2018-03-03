@@ -1,11 +1,13 @@
-import requests, telebot
+import re
+import requests
+import telebot
 from telebot.types import *
+
 from constants import *
 
 
 bot = telebot.TeleBot(token)
-institutes_list, groups_list = [], []
-new_settings = {}
+institutes_list, groups_list, group_numbers = [], [], []
 
 
 def delete_message(message):
@@ -15,9 +17,7 @@ def delete_message(message):
 
 
 def show_menu(message):
-    global new_settings
     keyboard = InlineKeyboardMarkup()
-    new_settings[str(message.chat.id)] = initial_settings
 
     for item in main_menu:
         keyboard.add(InlineKeyboardButton(text=item['name'], callback_data=item['value']))
@@ -39,10 +39,8 @@ def show_schedule_menu(message):
 
 
 def set_institute(message, response=messages['changeInstitute']):
-    global institutes_list, new_settings
+    global institutes_list
     keyboard = ReplyKeyboardMarkup()
-
-    new_settings[str(message.chat.id)] = initial_settings
 
     with db_conn.cursor() as cur:
         sql_query = 'SELECT name FROM institutes ORDER BY name'
@@ -53,16 +51,24 @@ def set_institute(message, response=messages['changeInstitute']):
             keyboard.row(item[0])
 
         bot.send_chat_action(message.chat.id, 'typing')
+
+        if response == messages['changeInstitute'] and message.text != messages['mainMenu']:
+            bot.edit_message_reply_markup(
+                chat_id=message.chat.id,
+                message_id=message.message_id,
+                reply_markup=InlineKeyboardMarkup([])
+            )
+
         send = bot.send_message(message.chat.id, response, reply_markup=keyboard)
         bot.register_next_step_handler(send, set_faculty)
 
 
 def set_faculty(message, response=messages['changeFaculty']):
-    global institutes_list, new_settings
+    global institutes_list
     value = message.text.strip().upper()
 
     if len([item for item in institutes_list if item == value]) != 0 \
-            or new_settings[str(message.chat.id)]['institute'] is not None:
+            or redis_db.get('setup-' + str(message.chat.id) + '-i') is not None:
 
         with db_conn.cursor() as cur:
             keyboard = ReplyKeyboardMarkup()
@@ -71,8 +77,7 @@ def set_faculty(message, response=messages['changeFaculty']):
 
             bot.send_chat_action(message.chat.id, 'typing')
             cur.execute(sql_query.format(value))
-            new_settings[str(message.chat.id)]['institute'] = value
-            new_settings[str(message.chat.id)]['faculty'] = None
+            redis_db.setex('setup-' + str(message.chat.id) + '-i', 64800, value)
 
             for item in cur:
                 groups_list.append(item[0])
@@ -85,60 +90,83 @@ def set_faculty(message, response=messages['changeFaculty']):
 
 
 def set_group_number(message, response=messages['changeGroupNumber']):
-    global groups_list, new_settings
+    global groups_list, group_numbers
+
     value = message.text.strip().upper()
 
     if len([item for item in groups_list if item == value]) != 0 \
-            and new_settings[str(message.chat.id)]['faculty'] is None:
-        new_settings[str(message.chat.id)]['faculty'] = value
+            and redis_db.get('setup-' + str(message.chat.id) + '-f') is None:
+        redis_db.setex('setup-' + str(message.chat.id) + '-f', 64800, value)
 
     if len([item for item in groups_list if item == value]) != 0 \
-            or new_settings[str(message.chat.id)]['faculty'] is not None:
+            or redis_db.get('setup-' + str(message.chat.id) + '-f') is not None:
+
+        keyboard = ReplyKeyboardMarkup()
+        sql_query = """SELECT name FROM groups WHERE name LIKE \'{}%\'
+                        AND institute_id = (SELECT id FROM institutes WHERE name = \'{}\')
+                    """
+
+        with db_conn.cursor() as cur:
+            cur.execute(sql_query.format(
+                redis_db.get('setup-' + str(message.chat.id) + '-f').decode('utf-8'),
+                redis_db.get('setup-' + str(message.chat.id) + '-i').decode('utf-8')
+            ))
+
+            group_numbers = list(cur)
 
         bot.send_chat_action(message.chat.id, 'typing')
-        new_settings[str(message.chat.id)]['group'] = new_settings[str(message.chat.id)]['groupID'] = None
-        send = bot.send_message(message.chat.id, response, reply_markup=ReplyKeyboardHide())
+
+        for i in group_numbers:
+            keyboard.add(re.search(r'^.*-(\d*)$', i[0]).group(1))
+
+        send = bot.send_message(message.chat.id, response, reply_markup=keyboard)
         bot.register_next_step_handler(send, set_subgroup_number)
     else:
         wrong_faculty(message)
 
 
 def set_subgroup_number(message, response=messages['changeSubgroupNumber']):
-    global new_settings
-
     bot.send_chat_action(message.chat.id, 'typing')
     value = message.text.strip()
+    faculty = redis_db.get('setup-' + str(message.chat.id) + '-f').decode('utf-8')
 
-    if new_settings[str(message.chat.id)]['faculty'] is None:
-        set_faculty(message, messages['wrongFaculty'])
+    if len([item for item in group_numbers if item[0] == faculty + '-' + value]) != 0 \
+            and redis_db.get('setup-' + str(message.chat.id) + '-g') is None:
+        redis_db.setex('setup-' + str(message.chat.id) + '-g', 64800, value)
 
-    with db_conn.cursor() as cur:
-        sql_query = 'SELECT id FROM groups WHERE name = \'{}\''
-        cur.execute(sql_query.format(new_settings[str(message.chat.id)]['faculty'] + '-' + value))
-        results = list(cur)
+    if len([item for item in group_numbers if item[0] == faculty + '-' + value]) != 0 \
+            or redis_db.get('setup-' + str(message.chat.id) + '-g') is not None:
 
-        keyboard = ReplyKeyboardMarkup(True, True)
-        keyboard.row('1', '2')
-        keyboard.row(messages['bothSubgroups'])
+        with db_conn.cursor() as cur:
+            sql_query = 'SELECT id FROM groups WHERE name = \'{}\''
+            cur.execute(sql_query.format(faculty + '-' + value))
+            results = list(cur)
 
-        if len(results) != 0 and new_settings[str(message.chat.id)]['group'] is None:
-            new_settings[str(message.chat.id)]['group'] = value
-            new_settings[str(message.chat.id)]['groupID'] = results[0][0]
-            send = bot.send_message(message.chat.id, response, reply_markup=keyboard)
-            bot.register_next_step_handler(send, save_changes)
-        elif new_settings[str(message.chat.id)]['group'] is not None:
-            send = bot.send_message(message.chat.id, response, reply_markup=keyboard)
-            bot.register_next_step_handler(send, save_changes)
-        else:
-            wrong_group_number(message)
+            keyboard = ReplyKeyboardMarkup(True, True)
+            keyboard.row('1', '2')
+            keyboard.row(messages['bothSubgroups'])
+
+            if len(results) != 0 and (redis_db.get('setup-' + str(message.chat.id) + '-g') is None or
+                                      redis_db.get('setup-' + str(message.chat.id) + '-g-id') is None):
+
+                redis_db.setex('setup-' + str(message.chat.id) + '-g', 64800, value)
+                redis_db.setex('setup-' + str(message.chat.id) + '-g-id', 64800, results[0][0])
+
+                send = bot.send_message(message.chat.id, response, reply_markup=keyboard)
+                bot.register_next_step_handler(send, save_changes)
+
+            elif redis_db.get('setup-' + str(message.chat.id) + '-g') is not None and \
+                    redis_db.get('setup-' + str(message.chat.id) + '-g-id') is not None:
+                send = bot.send_message(message.chat.id, response, reply_markup=keyboard)
+                bot.register_next_step_handler(send, save_changes)
+            else:
+                wrong_group_number(message)
 
 
 def save_changes(message):
-    global new_settings
     value = message.text.strip()
 
     def save(subgroup):
-        global new_settings
         update = False
         bot.send_chat_action(message.chat.id, 'typing')
 
@@ -148,38 +176,52 @@ def save_changes(message):
             if len(list(cur)) == 1:
                 update = True
 
-        with db_conn.cursor() as cur:
-            if update:
-                sql_query = 'UPDATE user_settings SET institute_id = (SELECT id FROM institutes WHERE name = \'{1}\'),'\
-                            'group_id = {2}, subgroup = {3} WHERE user_id = {0}'
-            else:
-                sql_query = 'INSERT INTO user_settings(user_id, institute_id, group_id, subgroup, first_name, ' \
-                            'last_name, username) VALUES ' \
-                            '({}, (SELECT id FROM institutes WHERE name = \'{}\'), {}, {}, \'{}\', \'{}\', {})'
+        if redis_db.get('setup-' + str(message.chat.id) + '-g-id') is None:
+            redis_db.delete('setup-' + str(message.chat.id) + '-g')
+        else:
+            with db_conn.cursor() as cur:
+                if update:
+                    sql_query = 'UPDATE user_settings SET institute_id = (SELECT id FROM institutes ' \
+                                'WHERE name = \'{1}\'),' \
+                                'group_id = {2}, subgroup = {3} WHERE user_id = {0}'
+                else:
+                    sql_query = 'INSERT INTO user_settings(user_id, institute_id, group_id, subgroup, first_name, ' \
+                                'last_name, username) VALUES ' \
+                                '({}, (SELECT id FROM institutes WHERE name = \'{}\'), {}, {}, \'{}\', {}, {})'
 
-            if message.chat.username is None:
-                username = 'NULL'
-            else:
-                username = '\'' + message.chat.username + '\''
+                if message.chat.username is None:
+                    username = 'NULL'
+                else:
+                    username = '\'' + message.chat.username + '\''
 
-            cur.execute(sql_query.format(
+                if message.chat.last_name is None:
+                    last_name = 'NULL'
+                else:
+                    last_name = '\'' + re.sub(r'\'', "\'\'", message.chat.last_name) + '\''
+
+                cur.execute(sql_query.format(
+                    message.chat.id,
+                    redis_db.get('setup-' + str(message.chat.id) + '-i').decode('utf-8'),
+                    redis_db.get('setup-' + str(message.chat.id) + '-g-id').decode('utf-8'),
+                    subgroup,
+                    re.sub(r'\'', "\'\'", message.chat.first_name),
+                    last_name,
+                    username
+                ))
+
+            db_conn.commit()
+            bot.send_message(
                 message.chat.id,
-                new_settings[str(message.chat.id)]['institute'],
-                new_settings[str(message.chat.id)]['groupID'],
-                subgroup,
-                message.chat.first_name,
-                message.chat.last_name,
-                username
-            ))
+                messages['saveChanges'],
+                reply_markup=ReplyKeyboardHide(),
+                parse_mode='Markdown'
+            )
+            show_menu(message)
 
-        db_conn.commit()
-        bot.send_message(
-            message.chat.id,
-            messages['saveChanges'],
-            reply_markup=ReplyKeyboardHide(),
-            parse_mode='Markdown'
-        )
-        show_menu(message)
+            redis_db.delete('setup-' + str(message.chat.id) + '-i')
+            redis_db.delete('setup-' + str(message.chat.id) + '-f')
+            redis_db.delete('setup-' + str(message.chat.id) + '-g')
+            redis_db.delete('setup-' + str(message.chat.id) + '-g-id')
 
     if value == '1' or value == '2':
         save(int(value))

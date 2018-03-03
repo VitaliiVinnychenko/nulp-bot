@@ -1,6 +1,9 @@
-import requests, re
+import json
+import re
+import requests
 from bs4 import BeautifulSoup, element
-from constants import base_url
+
+from constants import base_url, redis_db, db_conn
 
 
 def schedule_url(institute_id, group_id):
@@ -104,5 +107,7 @@ def get_schedule(institute_id, group_id):
             line_number = root.find_previous_sibling('td').text
 
             schedule[day][get_text(line_number)] = get_object(root.select('table tr'))
+
+    redis_db.setex(str(institute_id) + '-' + str(group_id), 518400, json.dumps({'schedule': schedule}))
 
     return schedule

@@ -27,8 +27,13 @@ def show_week_schedule(message, week='thisWeek', d=0):
             bot.send_message(message.chat.id, messages['noUser'], reply_markup=keyboard, parse_mode='Markdown')
         else:
             response = response[0]
+            data = redis_db.get(str(response[0]) + '-' + str(response[1]))
 
-            data = get_schedule(response[0], response[1])
+            if data is None:
+                data = get_schedule(response[0], response[1])
+            else:
+                data = json.loads(data.decode('utf-8'))['schedule']
+
             start_date, end_date = week_range(datetime.datetime.today() + datetime.timedelta(days=d))
             response_message = messages[week + 'Schedule'].format(
                 (start_date + datetime.timedelta(days=1)).strftime("%d.%m") + ' - '
@@ -137,7 +142,13 @@ def show_today_schedule(message):
                 reply_markup=ReplyKeyboardHide()
             )
         else:
-            data = get_schedule(response[0], response[1])[weekday]
+            data = redis_db.get(str(response[0]) + '-' + str(response[1]))
+
+            if data is None:
+                data = get_schedule(response[0], response[1])[weekday]
+            else:
+                data = json.loads(data.decode('utf-8'))['schedule'][weekday]
+
             response_message = messages['todaySchedule'].format(datetime.datetime.today().strftime("%d.%m"))
             response_message += generate_schedule_message(data, response[2])
 
@@ -171,12 +182,18 @@ def show_tomorrow_schedule(message):
                 delete_message(message)
                 bot.send_message(
                     chat_id=message.chat.id,
-                    text=messages['todayIsWeekend'],
+                    text=messages['tomorrowIsWeekend'],
                     parse_mode='Markdown',
                     reply_markup=ReplyKeyboardHide()
                 )
             else:
-                data = get_schedule(response[0], response[1])[weekday]
+                data = redis_db.get(str(response[0]) + '-' + str(response[1]))
+
+                if data is None:
+                    data = get_schedule(response[0], response[1])[weekday]
+                else:
+                    data = json.loads(data.decode('utf-8'))['schedule'][weekday]
+
                 response_message = messages['tomorrowSchedule'].format(
                     (datetime.datetime.today() + datetime.timedelta(days=1)).strftime("%d.%m")
                 )
@@ -218,17 +235,16 @@ def handle_settings(message):
 
 @bot.message_handler(commands=['start'])
 def handle_menu_command(message):
-    keyboard = ReplyKeyboardMarkup(True, False)
-    keyboard.row(messages['go'])
+    keyboard = InlineKeyboardMarkup()
+    keyboard.add(InlineKeyboardButton(text=messages['go'], callback_data=messages['go']))
 
     bot.send_chat_action(message.chat.id, 'typing')
-    send = bot.send_message(
+    bot.send_message(
         message.chat.id,
         messages['greeting'].format(message.from_user.first_name),
         parse_mode='Markdown',
         reply_markup=keyboard
     )
-    bot.register_next_step_handler(send, set_institute)
 
 
 @bot.message_handler(commands=['menu'])
@@ -248,9 +264,6 @@ def handle_text_content(message):
 
         bot.send_chat_action(message.chat.id, 'typing')
         bot.send_message(message.chat.id, messages['mainMenu'], reply_markup=keyboard)
-
-    elif message.text == settings_menu[1]:
-        set_institute(message)
 
     elif len(building) > 0 and building[0]['lat'] is not None:
         keyboard = InlineKeyboardMarkup()
@@ -345,6 +358,9 @@ def callback_inline(call):
             delete_message(call.message)
             show_menu(call.message)
 
+        elif call.data == messages['go']:
+            set_institute(call.message)
+
         elif call.data == 'menu':
             bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id,
                                           reply_markup=InlineKeyboardMarkup([]))
@@ -384,10 +400,18 @@ def callback_inline(call):
             delete_message(call.message)
             show_menu(call.message)
 
+        elif call.data == messages['go']:
+            set_institute(call.message)
+
         elif call.data == 'menu':
             bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id,
                                           reply_markup=InlineKeyboardMarkup([]))
             show_menu(call.message)
 
 
-bot.polling(none_stop=True)
+def run_telegram_bot():
+    bot.polling(none_stop=True)
+
+
+if __name__ == "__main__":
+    run_telegram_bot()
