@@ -260,7 +260,7 @@ def save_new_subgroup(message):
         bot.send_message(
             message.chat.id,
             messages['successfullyUpdatedSubgroup'],
-            reply_markup=ReplyKeyboardHide(),
+            reply_markup=ReplyKeyboardRemove(),
             parse_mode='Markdown'
         )
         show_menu(message)

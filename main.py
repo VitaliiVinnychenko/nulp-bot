@@ -139,7 +139,7 @@ def show_today_schedule(message):
                 chat_id=message.chat.id,
                 text=messages['todayIsWeekend'],
                 parse_mode='Markdown',
-                reply_markup=ReplyKeyboardHide()
+                reply_markup=ReplyKeyboardRemove()
             )
         else:
             data = redis_db.get(str(response[0]) + '-' + str(response[1]))
@@ -184,7 +184,7 @@ def show_tomorrow_schedule(message):
                     chat_id=message.chat.id,
                     text=messages['tomorrowIsWeekend'],
                     parse_mode='Markdown',
-                    reply_markup=ReplyKeyboardHide()
+                    reply_markup=ReplyKeyboardRemove()
                 )
             else:
                 data = redis_db.get(str(response[0]) + '-' + str(response[1]))
@@ -273,7 +273,7 @@ def handle_text_content(message):
         bot.send_message(
             message.chat.id,
             message.text + ' знаходиться за адресою:\n*' + building[0]['address'] + '*',
-            reply_markup=ReplyKeyboardHide(),
+            reply_markup=ReplyKeyboardRemove(),
             parse_mode='Markdown'
         )
 
@@ -289,37 +289,37 @@ def handle_text_content(message):
 @bot.message_handler(content_types=['photo'])
 def handle_text_content(message):
     bot.send_chat_action(message.chat.id, 'typing')
-    bot.send_message(message.chat.id, messages['photoAnswer'], reply_markup=ReplyKeyboardHide())
+    bot.send_message(message.chat.id, messages['photoAnswer'], reply_markup=ReplyKeyboardRemove())
 
 
 @bot.message_handler(content_types=['video', 'video_note'])
 def handle_text_content(message):
     bot.send_chat_action(message.chat.id, 'typing')
-    bot.send_message(message.chat.id, messages['videoAnswer'], reply_markup=ReplyKeyboardHide())
+    bot.send_message(message.chat.id, messages['videoAnswer'], reply_markup=ReplyKeyboardRemove())
 
 
 @bot.message_handler(content_types=['contact'])
 def handle_text_content(message):
     bot.send_chat_action(message.chat.id, 'typing')
-    bot.send_message(message.chat.id, messages['contactAnswer'], reply_markup=ReplyKeyboardHide())
+    bot.send_message(message.chat.id, messages['contactAnswer'], reply_markup=ReplyKeyboardRemove())
 
 
 @bot.message_handler(content_types=['location'])
 def handle_text_content(message):
     bot.send_chat_action(message.chat.id, 'typing')
-    bot.send_message(message.chat.id, messages['locationAnswer'], reply_markup=ReplyKeyboardHide())
+    bot.send_message(message.chat.id, messages['locationAnswer'], reply_markup=ReplyKeyboardRemove())
 
 
 @bot.message_handler(content_types=['audio', 'document', 'voice'])
 def handle_text_content(message):
     bot.send_chat_action(message.chat.id, 'typing')
-    bot.send_message(message.chat.id, messages['otherAnswer'], reply_markup=ReplyKeyboardHide())
+    bot.send_message(message.chat.id, messages['otherAnswer'], reply_markup=ReplyKeyboardRemove())
 
 
 @bot.message_handler(content_types=['sticker'])
 def handle_text_content(message):
     bot.send_chat_action(message.chat.id, 'typing')
-    bot.send_message(message.chat.id, messages['stickerAnswer'], reply_markup=ReplyKeyboardHide())
+    bot.send_message(message.chat.id, messages['stickerAnswer'], reply_markup=ReplyKeyboardRemove())
 
 
 @bot.callback_query_handler(func=lambda call: True)
