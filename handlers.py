@@ -1,7 +1,7 @@
 import re
 import requests
 import telebot
-from telebot.types import *
+from telebot.types import ReplyKeyboardHide, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup
 
 from constants import *
 
