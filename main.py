@@ -135,7 +135,7 @@ def show_today_schedule(message):
 
         keyboard = InlineKeyboardMarkup()
 
-        for item in settings_menu:
+        for item in main_menu:
             keyboard.add(InlineKeyboardButton(text=item, callback_data=item))
 
         if weekday == 5 or weekday == 6:
@@ -185,7 +185,7 @@ def show_tomorrow_schedule(message):
 
             keyboard = InlineKeyboardMarkup()
 
-            for item in settings_menu:
+            for item in main_menu:
                 keyboard.add(InlineKeyboardButton(text=item, callback_data=item))
 
             if weekday == 5 or weekday == 6:
