@@ -133,13 +133,18 @@ def show_today_schedule(message):
         response = response[0]
         weekday = datetime.datetime.today().weekday()
 
+        keyboard = InlineKeyboardMarkup()
+
+        for item in settings_menu:
+            keyboard.add(InlineKeyboardButton(text=item, callback_data=item))
+
         if weekday == 5 or weekday == 6:
             delete_message(message)
             bot.send_message(
                 chat_id=message.chat.id,
                 text=messages['todayIsWeekend'],
                 parse_mode='Markdown',
-                reply_markup=ReplyKeyboardRemove()
+                reply_markup=keyboard
             )
         else:
             data = redis_db.get(str(response[0]) + '-' + str(response[1]))
@@ -178,13 +183,18 @@ def show_tomorrow_schedule(message):
             response = response[0]
             weekday = (datetime.datetime.today() + datetime.timedelta(days=1)).weekday()
 
+            keyboard = InlineKeyboardMarkup()
+
+            for item in settings_menu:
+                keyboard.add(InlineKeyboardButton(text=item, callback_data=item))
+
             if weekday == 5 or weekday == 6:
                 delete_message(message)
                 bot.send_message(
                     chat_id=message.chat.id,
                     text=messages['tomorrowIsWeekend'],
                     parse_mode='Markdown',
-                    reply_markup=ReplyKeyboardRemove()
+                    reply_markup=keyboard
                 )
             else:
                 data = redis_db.get(str(response[0]) + '-' + str(response[1]))
