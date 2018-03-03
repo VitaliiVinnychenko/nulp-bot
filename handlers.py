@@ -1,7 +1,7 @@
 import re
 import requests
 import telebot
-from telebot.types import ReplyKeyboardHide, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup
+from telebot.types import ReplyKeyboardRemove, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup
 
 from constants import *
 
@@ -213,7 +213,7 @@ def save_changes(message):
             bot.send_message(
                 message.chat.id,
                 messages['saveChanges'],
-                reply_markup=ReplyKeyboardHide(),
+                reply_markup=ReplyKeyboardRemove(),
                 parse_mode='Markdown'
             )
             show_menu(message)
