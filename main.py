@@ -1,7 +1,7 @@
 import datetime, logging, json
 from html_parser import get_schedule
 from handlers import *
-from constants import db_conn, days
+from constants import db_conn, days, main_menu
 
 
 logger = telebot.logger
