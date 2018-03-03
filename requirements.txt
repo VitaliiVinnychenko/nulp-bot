@@ -2,3 +2,4 @@ telebot
 beautifulsoup4
 requests
 psycopg2
+redis
