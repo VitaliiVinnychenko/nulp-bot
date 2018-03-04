@@ -36,12 +36,7 @@ def show_week_schedule(message, week='thisWeek', d=0):
             else:
                 data = json.loads(data.decode('utf-8'))['schedule']
 
-            data = [collections.OrderedDict(sorted(i.items())) for i in data]
-
-            for i in list(data):
-                print(i[0])
-
-            data = [dict(i) for i in data]
+            data = [dict(collections.OrderedDict(sorted(i.items()))) for i in data]
 
             start_date, end_date = week_range(datetime.datetime.today() + datetime.timedelta(days=d))
             response_message = messages[week + 'Schedule'].format(
