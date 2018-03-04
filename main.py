@@ -2,12 +2,16 @@ import datetime
 import json
 import logging
 import collections
-from constants import db_conn, days, main_menu
+import atexit
+from constants import *
 from handlers import *
 from html_parser import get_schedule
+from job import JobQueue, Days
+
 
 logger = telebot.logger
 telebot.logger.setLevel(logging.DEBUG)
+jq = JobQueue(bot=bot)
 
 
 def get_format_data(key, value, i):
@@ -172,19 +176,24 @@ def show_today_schedule(message):
 
 
 @bot.message_handler(commands=['tomorrow'])
-def show_tomorrow_schedule(message):
-    bot.send_chat_action(message.chat.id, 'typing')
+def show_tomorrow_schedule(message, local_bot=bot):
+    if type(message) == int:
+        user_id = message
+    else:
+        user_id = message.chat.id
+
+    local_bot.send_chat_action(user_id, 'typing')
 
     with db_conn.cursor() as cur:
         sql_query = 'SELECT institute_id, group_id, subgroup FROM user_settings WHERE user_id = {}'
-        cur.execute(sql_query.format(message.chat.id))
+        cur.execute(sql_query.format(user_id))
         response = list(cur)
 
         keyboard = InlineKeyboardMarkup()
         keyboard.add(InlineKeyboardButton(text=messages['menu'], callback_data='menu'))
 
         if len(response) == 0:
-            bot.send_message(message.chat.id, messages['noUser'], reply_markup=keyboard, parse_mode='Markdown')
+            local_bot.send_message(user_id, messages['noUser'], reply_markup=keyboard, parse_mode='Markdown')
         else:
             response = response[0]
             weekday = (datetime.datetime.today() + datetime.timedelta(days=1)).weekday()
@@ -195,9 +204,11 @@ def show_tomorrow_schedule(message):
                 keyboard.add(InlineKeyboardButton(text=item['name'], callback_data=item['value']))
 
             if weekday == 5 or weekday == 6:
-                delete_message(message)
-                bot.send_message(
-                    chat_id=message.chat.id,
+                if type(message) != int:
+                    delete_message(message)
+
+                local_bot.send_message(
+                    chat_id=user_id,
                     text=messages['tomorrowIsWeekend'],
                     parse_mode='Markdown',
                     reply_markup=keyboard
@@ -217,9 +228,11 @@ def show_tomorrow_schedule(message):
                 )
                 response_message += generate_schedule_message(data, response[2])
 
-                delete_message(message)
-                bot.send_message(
-                    chat_id=message.chat.id,
+                if type(message) != int:
+                    delete_message(message)
+
+                local_bot.send_message(
+                    chat_id=user_id,
                     text=response_message,
                     reply_markup=keyboard
                 )
@@ -274,7 +287,31 @@ def handle_menu_command(message):
 def handle_text_content(message):
     building = [item for item in buildings if item['name'].lower() == message.text.lower().strip()]
 
-    if message.text == messages['back']:
+    if message.text == notification_buttons[0]:
+        bot.send_chat_action(message.chat.id, 'typing')
+
+        keyboard = ReplyKeyboardRemove()
+
+        with db_conn.cursor() as cur:
+            sql_query = 'UPDATE user_settings SET send_schedule = TRUE WHERE user_id = {};'
+            cur.execute(sql_query.format(message.chat.id))
+
+        db_conn.commit()
+        bot.send_message(message.chat.id, messages['saveNotifications'], reply_markup=keyboard, parse_mode='Markdown')
+
+    elif message.text == notification_buttons[1]:
+        bot.send_chat_action(message.chat.id, 'typing')
+
+        keyboard = ReplyKeyboardRemove()
+
+        with db_conn.cursor() as cur:
+            sql_query = 'UPDATE user_settings SET send_schedule = FALSE WHERE user_id = {};'
+            cur.execute(sql_query.format(message.chat.id))
+
+        db_conn.commit()
+        bot.send_message(message.chat.id, messages['saveNotifications'], reply_markup=keyboard, parse_mode='Markdown')
+
+    elif message.text == messages['back']:
         keyboard = InlineKeyboardMarkup()
 
         for item in main_menu:
@@ -301,6 +338,13 @@ def handle_text_content(message):
             latitude=building[0]['lat'],
             longitude=building[0]['lng'],
             reply_markup=keyboard
+        )
+    else:
+        bot.send_chat_action(message.chat.id, 'typing')
+        bot.send_message(
+            message.chat.id,
+            text='Шо ти з мене хочеш??? ',
+            reply_markup=ReplyKeyboardRemove()
         )
 
 
@@ -372,6 +416,10 @@ def callback_inline(call):
             delete_message(call.message)
             change_subgroup_number(call.message)
 
+        elif call.data == settings_menu[3]:
+            delete_message(call.message)
+            toggle_notifications(call.message)
+
         elif call.data == messages['back'] or call.data == 'back':
             delete_message(call.message)
             show_menu(call.message)
@@ -414,6 +462,10 @@ def callback_inline(call):
             delete_message(call.message)
             change_subgroup_number(call.message)
 
+        elif call.data == settings_menu[3]:
+            delete_message(call.message)
+            toggle_notifications(call.message)
+
         elif call.data == messages['back'] or call.data == 'back':
             delete_message(call.message)
             show_menu(call.message)
@@ -427,9 +479,31 @@ def callback_inline(call):
             show_menu(call.message)
 
 
-def run_telegram_bot():
-    bot.polling(none_stop=True)
+def send_schedule(local_bot):
+    weekday = (datetime.datetime.today() + datetime.timedelta(days=1)).weekday()
+
+    if weekday != 5 and weekday != 6:
+        with db_conn.cursor() as cur:
+            sql_query = 'SELECT user_id FROM user_settings WHERE send_schedule = TRUE;'
+            cur.execute(sql_query)
+
+            for i in cur:
+                show_tomorrow_schedule(i[0], local_bot)
+
+
+def exit_handler():
+    jq.stop()
 
 
 if __name__ == "__main__":
-    run_telegram_bot()
+    atexit.register(exit_handler)
+
+    jq.run_daily(
+        callback=send_schedule,
+        days=(Days.MON, Days.TUE, Days.WED, Days.THU, Days.SUN),
+        time=datetime.time(19, 00, 00)
+    )
+
+    jq.start()
+
+    bot.polling(none_stop=True)

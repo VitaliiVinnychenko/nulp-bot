@@ -327,3 +327,12 @@ def show_buildings_list(call):
         text=messages['buildingsMenu'],
         reply_markup=keyboard,
     )
+
+
+def toggle_notifications(message):
+    keyboard = ReplyKeyboardMarkup(True, True)
+
+    keyboard.row(*notification_buttons)
+
+    bot.send_chat_action(message.chat.id, 'typing')
+    bot.send_message(message.chat.id, messages['toggleNotifications'], reply_markup=keyboard)
