@@ -36,8 +36,6 @@ def show_week_schedule(message, week='thisWeek', d=0):
             else:
                 data = json.loads(data.decode('utf-8'))['schedule']
 
-            data = [dict(collections.OrderedDict(sorted(i.items()))) for i in data]
-
             start_date, end_date = week_range(datetime.datetime.today() + datetime.timedelta(days=d))
             response_message = messages[week + 'Schedule'].format(
                 (start_date + datetime.timedelta(days=1)).strftime("%d.%m") + ' - '
@@ -46,6 +44,8 @@ def show_week_schedule(message, week='thisWeek', d=0):
 
             index = 0
             for i in data:
+                i = collections.OrderedDict(sorted(i.items()))
+
                 response_message += '\n\n\n' + days[index].upper() + ' ' + \
                                     (start_date + datetime.timedelta(days=index + 1)).strftime("(%d.%m)")
                 response_message += generate_schedule_message(i, response[2], week)
@@ -158,7 +158,7 @@ def show_today_schedule(message):
             else:
                 data = json.loads(data.decode('utf-8'))['schedule'][weekday]
 
-                data = dict(collections.OrderedDict(sorted(data.items())))
+            data = collections.OrderedDict(sorted(data.items()))
 
             response_message = messages['todaySchedule'].format(datetime.datetime.today().strftime("%d.%m"))
             response_message += generate_schedule_message(data, response[2])
@@ -210,7 +210,7 @@ def show_tomorrow_schedule(message):
                 else:
                     data = json.loads(data.decode('utf-8'))['schedule'][weekday]
 
-                data = dict(collections.OrderedDict(sorted(data.items())))
+                data = collections.OrderedDict(sorted(data.items()))
 
                 response_message = messages['tomorrowSchedule'].format(
                     (datetime.datetime.today() + datetime.timedelta(days=1)).strftime("%d.%m")
