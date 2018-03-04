@@ -501,7 +501,7 @@ if __name__ == "__main__":
     jq.run_daily(
         callback=send_schedule,
         days=(Days.MON, Days.TUE, Days.WED, Days.THU, Days.SUN),
-        time=datetime.time(16, 30, 00)
+        time=datetime.time(19, 00, 00)
     )
 
     jq.start()
