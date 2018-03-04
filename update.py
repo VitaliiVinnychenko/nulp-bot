@@ -13,4 +13,8 @@ if __name__ == '__main__':
         cur.execute(sql_query)
 
         for i in cur:
-            bot.send_message(chat_id=i[0], text=updateMessage.format(i[1]), parse_mode='Markdown', reply_markup=markup)
+            try:
+                bot.send_message(chat_id=i[0], text=updateMessage.format(i[1]), parse_mode='Markdown',
+                                 reply_markup=markup)
+            except:
+                continue
