@@ -1,8 +1,10 @@
-import datetime, logging, json
-from html_parser import get_schedule
-from handlers import *
+import datetime
+import json
+import logging
+import collections
 from constants import db_conn, days, main_menu
-
+from handlers import *
+from html_parser import get_schedule
 
 logger = telebot.logger
 telebot.logger.setLevel(logging.DEBUG)
@@ -33,6 +35,8 @@ def show_week_schedule(message, week='thisWeek', d=0):
                 data = get_schedule(response[0], response[1])
             else:
                 data = json.loads(data.decode('utf-8'))['schedule']
+
+            data = [dict(collections.OrderedDict(sorted(i.items()))) for i in data]
 
             start_date, end_date = week_range(datetime.datetime.today() + datetime.timedelta(days=d))
             response_message = messages[week + 'Schedule'].format(
@@ -154,6 +158,8 @@ def show_today_schedule(message):
             else:
                 data = json.loads(data.decode('utf-8'))['schedule'][weekday]
 
+            data = dict(collections.OrderedDict(sorted(data.items())))
+
             response_message = messages['todaySchedule'].format(datetime.datetime.today().strftime("%d.%m"))
             response_message += generate_schedule_message(data, response[2])
 
@@ -203,6 +209,8 @@ def show_tomorrow_schedule(message):
                     data = get_schedule(response[0], response[1])[weekday]
                 else:
                     data = json.loads(data.decode('utf-8'))['schedule'][weekday]
+
+                data = dict(collections.OrderedDict(sorted(data.items())))
 
                 response_message = messages['tomorrowSchedule'].format(
                     (datetime.datetime.today() + datetime.timedelta(days=1)).strftime("%d.%m")
