@@ -37,8 +37,8 @@ def show_week_schedule(message, week='thisWeek', d=0):
                 data = json.loads(data.decode('utf-8'))['schedule']
 
             data = [collections.OrderedDict(sorted(i.items())) for i in data]
-            
-            for i in data:
+
+            for i in list(data):
                 print(i[0])
 
             data = [dict(i) for i in data]
