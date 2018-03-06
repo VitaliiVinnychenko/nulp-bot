@@ -2,7 +2,6 @@ import datetime
 import json
 import logging
 import collections
-import atexit
 from constants import *
 from handlers import *
 from html_parser import get_schedule
@@ -484,26 +483,25 @@ def send_schedule(local_bot):
 
     if weekday != 5 and weekday != 6:
         with db_conn.cursor() as cur:
-            sql_query = 'SELECT user_id FROM user_settings WHERE send_schedule = TRUE;'
+            sql_query = 'SELECT user_id FROM user_settings WHERE send__schedule = TRUE;'
             cur.execute(sql_query)
 
             for i in cur:
                 show_tomorrow_schedule(i[0], local_bot)
 
 
-def exit_handler():
-    jq.stop()
-
-
 if __name__ == "__main__":
-    atexit.register(exit_handler)
+    try:
+        jq.run_daily(
+            callback=send_schedule,
+            days=(Days.MON, Days.TUE, Days.WED, Days.THU, Days.SUN),
+            time=datetime.time(19, 00, 00)
+        )
 
-    jq.run_daily(
-        callback=send_schedule,
-        days=(Days.MON, Days.TUE, Days.WED, Days.THU, Days.SUN),
-        time=datetime.time(19, 00, 00)
-    )
+        jq.start()
 
-    jq.start()
-
-    bot.polling(none_stop=True)
+        bot.polling(none_stop=True)
+    except SystemExit:
+        jq.stop()
+    finally:
+        jq.stop()
