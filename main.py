@@ -292,7 +292,7 @@ def handle_text_content(message):
         keyboard = ReplyKeyboardRemove()
 
         with db_conn.cursor() as cur:
-            sql_query = 'UPDATE user_settings SET send_schedule = TRUE WHERE user_id = {};'
+            sql_query = 'UPDATE user_settings SET send__schedule = TRUE WHERE user_id = {};'
             cur.execute(sql_query.format(message.chat.id))
 
         db_conn.commit()
@@ -304,7 +304,7 @@ def handle_text_content(message):
         keyboard = ReplyKeyboardRemove()
 
         with db_conn.cursor() as cur:
-            sql_query = 'UPDATE user_settings SET send_schedule = FALSE WHERE user_id = {};'
+            sql_query = 'UPDATE user_settings SET send__schedule = FALSE WHERE user_id = {};'
             cur.execute(sql_query.format(message.chat.id))
 
         db_conn.commit()
