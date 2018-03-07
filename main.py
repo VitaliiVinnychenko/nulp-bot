@@ -501,7 +501,5 @@ if __name__ == "__main__":
         jq.start()
 
         bot.polling(none_stop=True)
-    except SystemExit:
-        jq.stop()
-    finally:
+    except:
         jq.stop()

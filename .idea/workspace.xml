@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="622dd6f3-011b-47d4-bdb5-1248e49a712c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/constants.py" afterPath="$PROJECT_DIR$/constants.py" />
+      <change beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
       <change beforePath="$PROJECT_DIR$/update.py" afterPath="$PROJECT_DIR$/update.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,48 +15,37 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/nulp_bot$main.coverage" NAME="main Coverage Results" MODIFIED="1520180160111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/nulp_bot$update.coverage" NAME="update Coverage Results" MODIFIED="1520181196520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nulp_bot$main.coverage" NAME="main Coverage Results" MODIFIED="1520372358349" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nulp_bot$update.coverage" NAME="update Coverage Results" MODIFIED="1520442342283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.py">
+      <file leaf-file-name="update.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/update.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="505" column="0" lean-forward="true" selection-start-line="505" selection-start-column="0" selection-end-line="505" selection-end-column="0" />
+            <state relative-caret-position="210">
+              <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
               <folding>
-                <element signature="e#0#15#0" expanded="true" />
-                <marker date="1520180634958" expanded="true" signature="589:666" ph="SELECT insti... user_settings" />
-                <marker date="1520180634958" expanded="true" signature="4432:4509" ph="SELECT insti... user_settings" />
-                <marker date="1520180634958" expanded="true" signature="6326:6403" ph="SELECT insti... user_settings" />
-                <marker date="1520180634958" expanded="true" signature="9928:9992" ph="UPDATE user_settings... " />
-                <marker date="1520180634958" expanded="true" signature="10412:10477" ph="UPDATE user_settings... " />
-                <marker date="1520180634958" expanded="true" signature="16692:16752" ph="SELECT user_... user_settings" />
+                <marker date="1520442311576" expanded="true" signature="398:443" ph="SELECT user_... user_settings" />
+                <marker date="1520442311576" expanded="true" signature="398:487" ph="SELECT user_... user_settings" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="handlers.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handlers.py">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-617">
-              <caret line="263" column="12" lean-forward="false" selection-start-line="263" selection-start-column="12" selection-end-line="263" selection-end-column="33" />
+            <state relative-caret-position="493">
+              <caret line="504" column="17" lean-forward="true" selection-start-line="504" selection-start-column="17" selection-end-line="504" selection-end-column="17" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
-                <marker date="1520179168737" expanded="true" signature="1339:1380" ph="SELECT name institutes" />
-                <marker date="1520179168737" expanded="true" signature="2402:2542" ph="SELECT name group_names" />
-                <marker date="1520179168737" expanded="true" signature="2482:2527" ph="SELECT id FR... institutes" />
-                <marker date="1520179168737" expanded="true" signature="3635:3773" ph="SELECT name groups" />
-                <marker date="1520179168737" expanded="true" signature="3727:3772" ph="SELECT id FR... institutes" />
-                <marker date="1520179168737" expanded="true" signature="5175:5216" ph="SELECT id FR... groups" />
-                <marker date="1520179168737" expanded="true" signature="6632:6676" ph="select * fro... user_settings" />
-                <marker date="1520179168737" expanded="true" signature="7033:7246" ph="UPDATE user_settings... " />
-                <marker date="1520179168737" expanded="true" signature="7074:7157" ph="SELECT id FR... institutes" />
-                <marker date="1520179168737" expanded="true" signature="7303:7563" ph="INSERT INTO user_settings... " />
-                <marker date="1520179168737" expanded="true" signature="7492:7537" ph="SELECT id FR... institutes" />
-                <marker date="1520179168737" expanded="true" signature="9777:9834" ph="UPDATE user_settings... " />
+                <element signature="e#0#15#0" expanded="true" />
+                <marker date="1520448568622" expanded="true" signature="575:652" ph="SELECT insti... user_settings" />
+                <marker date="1520448568622" expanded="true" signature="4418:4495" ph="SELECT insti... user_settings" />
+                <marker date="1520448568622" expanded="true" signature="6312:6389" ph="SELECT insti... user_settings" />
+                <marker date="1520448568622" expanded="true" signature="9914:9979" ph="UPDATE user_settings... " />
+                <marker date="1520448568622" expanded="true" signature="10399:10465" ph="UPDATE user_settings... " />
+                <marker date="1520448568622" expanded="true" signature="16680:16741" ph="SELECT user_... user_settings" />
               </folding>
             </state>
           </provider>
@@ -63,23 +54,10 @@
       <file leaf-file-name="constants.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="105">
+              <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="update.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/update.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-                <marker date="1520181601174" expanded="true" signature="382:427" ph="SELECT user_... user_settings" />
               </folding>
             </state>
           </provider>
@@ -96,9 +74,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>json</find>
-      <find>todayIsWeekend</find>
-      <find>todayIs</find>
       <find>tomo</find>
       <find>main_me</find>
       <find>get_sch</find>
@@ -126,6 +101,9 @@
       <find>set_</find>
       <find>show_tomorrow_schedule</find>
       <find>weekday = (datetime.datetime.today() + datetime.timedelta(days=1)).weekday()</find>
+      <find>Job</find>
+      <find>send_sche</find>
+      <find>sticker</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -138,9 +116,9 @@
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/job.py" />
         <option value="$PROJECT_DIR$/handlers.py" />
+        <option value="$PROJECT_DIR$/update.py" />
         <option value="$PROJECT_DIR$/constants.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/update.py" />
       </list>
     </option>
   </component>
@@ -170,7 +148,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -178,10 +155,15 @@
               <item name="nulp-bot" type="b2602c69:ProjectViewProjectNode" />
               <item name="nulp-bot" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="nulp-bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -276,7 +258,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36728394" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40432099" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -305,18 +287,362 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4725">
+          <caret line="320" column="34" lean-forward="false" selection-start-line="320" selection-start-column="34" selection-end-line="320" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="84" lean-forward="false" selection-start-line="6" selection-start-column="84" selection-end-line="6" selection-end-column="84" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1520180634958" expanded="true" signature="589:666" ph="SELECT insti... user_settings" />
-            <marker date="1520180634958" expanded="true" signature="4432:4509" ph="SELECT insti... user_settings" />
-            <marker date="1520180634958" expanded="true" signature="6326:6403" ph="SELECT insti... user_settings" />
-            <marker date="1520180634958" expanded="true" signature="9928:9992" ph="UPDATE user_settings... " />
-            <marker date="1520180634958" expanded="true" signature="10412:10477" ph="UPDATE user_settings... " />
-            <marker date="1520180634958" expanded="true" signature="16692:16752" ph="SELECT user_... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="575:652" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="4418:4495" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="6312:6389" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="9914:9979" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="10399:10465" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="16680:16741" ph="SELECT user_... user_settings" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4725">
+          <caret line="320" column="34" lean-forward="false" selection-start-line="320" selection-start-column="34" selection-end-line="320" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="84" lean-forward="false" selection-start-line="6" selection-start-column="84" selection-end-line="6" selection-end-column="84" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1520448568622" expanded="true" signature="575:652" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="4418:4495" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="6312:6389" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="9914:9979" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="10399:10465" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="16680:16741" ph="SELECT user_... user_settings" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4725">
+          <caret line="320" column="34" lean-forward="false" selection-start-line="320" selection-start-column="34" selection-end-line="320" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="84" lean-forward="false" selection-start-line="6" selection-start-column="84" selection-end-line="6" selection-end-column="84" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7455">
+          <caret line="505" column="0" lean-forward="false" selection-start-line="505" selection-start-column="0" selection-end-line="505" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1520448568622" expanded="true" signature="575:652" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="4418:4495" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="6312:6389" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="9914:9979" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="10399:10465" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="16680:16741" ph="SELECT user_... user_settings" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4725">
+          <caret line="320" column="34" lean-forward="false" selection-start-line="320" selection-start-column="34" selection-end-line="320" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="84" lean-forward="false" selection-start-line="6" selection-start-column="84" selection-end-line="6" selection-end-column="84" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="18" column="19" lean-forward="false" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+          <folding>
+            <marker date="1520442311576" expanded="true" signature="398:443" ph="SELECT user_... user_settings" />
+            <marker date="1520442311576" expanded="true" signature="398:487" ph="SELECT user_... user_settings" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1520448568622" expanded="true" signature="575:652" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="4418:4495" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="6312:6389" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="9914:9979" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="10399:10465" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="16680:16741" ph="SELECT user_... user_settings" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4725">
+          <caret line="320" column="34" lean-forward="false" selection-start-line="320" selection-start-column="34" selection-end-line="320" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="84" lean-forward="false" selection-start-line="6" selection-start-column="84" selection-end-line="6" selection-end-column="84" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7455">
+          <caret line="505" column="0" lean-forward="false" selection-start-line="505" selection-start-column="0" selection-end-line="505" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1520448568622" expanded="true" signature="575:652" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="4418:4495" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="6312:6389" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="9914:9979" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="10399:10465" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="16680:16741" ph="SELECT user_... user_settings" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4800">
+          <caret line="320" column="34" lean-forward="false" selection-start-line="320" selection-start-column="34" selection-end-line="320" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="84" lean-forward="false" selection-start-line="6" selection-start-column="84" selection-end-line="6" selection-end-column="84" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <folding>
+            <marker date="1520442311576" expanded="true" signature="398:443" ph="SELECT user_... user_settings" />
+            <marker date="1520442311576" expanded="true" signature="398:487" ph="SELECT user_... user_settings" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7455">
+          <caret line="505" column="0" lean-forward="false" selection-start-line="505" selection-start-column="0" selection-end-line="505" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1520448568622" expanded="true" signature="575:652" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="4418:4495" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="6312:6389" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="9914:9979" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="10399:10465" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="16680:16741" ph="SELECT user_... user_settings" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4725">
+          <caret line="320" column="34" lean-forward="false" selection-start-line="320" selection-start-column="34" selection-end-line="320" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="84" lean-forward="false" selection-start-line="6" selection-start-column="84" selection-end-line="6" selection-end-column="84" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <marker date="1520442311576" expanded="true" signature="398:443" ph="SELECT user_... user_settings" />
+            <marker date="1520442311576" expanded="true" signature="398:487" ph="SELECT user_... user_settings" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7455">
+          <caret line="505" column="0" lean-forward="false" selection-start-line="505" selection-start-column="0" selection-end-line="505" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1520448568622" expanded="true" signature="575:652" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="4418:4495" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="6312:6389" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="9914:9979" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="10399:10465" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="16680:16741" ph="SELECT user_... user_settings" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4725">
+          <caret line="320" column="34" lean-forward="true" selection-start-line="320" selection-start-column="34" selection-end-line="320" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="84" lean-forward="true" selection-start-line="6" selection-start-column="84" selection-end-line="6" selection-end-column="84" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7455">
+          <caret line="505" column="0" lean-forward="false" selection-start-line="505" selection-start-column="0" selection-end-line="505" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1520448568622" expanded="true" signature="575:652" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="4418:4495" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="6312:6389" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="9914:9979" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="10399:10465" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="16680:16741" ph="SELECT user_... user_settings" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3870">
+          <caret line="263" column="12" lean-forward="false" selection-start-line="263" selection-start-column="12" selection-end-line="263" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1520448568622" expanded="true" signature="575:652" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="4418:4495" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="6312:6389" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="9914:9979" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="10399:10465" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="16680:16741" ph="SELECT user_... user_settings" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handlers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3945">
+          <caret line="263" column="12" lean-forward="false" selection-start-line="263" selection-start-column="12" selection-end-line="263" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1520448568622" expanded="true" signature="575:652" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="4418:4495" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="6312:6389" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="9914:9979" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="10399:10465" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="16680:16741" ph="SELECT user_... user_settings" />
           </folding>
         </state>
       </provider>
@@ -325,21 +651,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="8" column="28" lean-forward="true" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <marker date="1520179168737" expanded="true" signature="1339:1380" ph="SELECT name institutes" />
-            <marker date="1520179168737" expanded="true" signature="2402:2542" ph="SELECT name group_names" />
-            <marker date="1520179168737" expanded="true" signature="2482:2527" ph="SELECT id FR... institutes" />
-            <marker date="1520179168737" expanded="true" signature="3635:3773" ph="SELECT name groups" />
-            <marker date="1520179168737" expanded="true" signature="3727:3772" ph="SELECT id FR... institutes" />
-            <marker date="1520179168737" expanded="true" signature="5175:5216" ph="SELECT id FR... groups" />
-            <marker date="1520179168737" expanded="true" signature="6632:6676" ph="select * fro... user_settings" />
-            <marker date="1520179168737" expanded="true" signature="7033:7246" ph="UPDATE user_settings... " />
-            <marker date="1520179168737" expanded="true" signature="7074:7157" ph="SELECT id FR... institutes" />
-            <marker date="1520179168737" expanded="true" signature="7303:7563" ph="INSERT INTO user_settings... " />
-            <marker date="1520179168737" expanded="true" signature="7492:7537" ph="SELECT id FR... institutes" />
-            <marker date="1520179168737" expanded="true" signature="9777:9834" ph="UPDATE user_settings... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -349,12 +660,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1520180634958" expanded="true" signature="589:666" ph="SELECT insti... user_settings" />
-            <marker date="1520180634958" expanded="true" signature="4432:4509" ph="SELECT insti... user_settings" />
-            <marker date="1520180634958" expanded="true" signature="6326:6403" ph="SELECT insti... user_settings" />
-            <marker date="1520180634958" expanded="true" signature="9928:9992" ph="UPDATE user_settings... " />
-            <marker date="1520180634958" expanded="true" signature="10412:10477" ph="UPDATE user_settings... " />
-            <marker date="1520180634958" expanded="true" signature="16692:16752" ph="SELECT user_... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="575:652" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="4418:4495" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="6312:6389" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="9914:9979" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="10399:10465" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="16680:16741" ph="SELECT user_... user_settings" />
           </folding>
         </state>
       </provider>
@@ -375,12 +686,12 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1520180634958" expanded="true" signature="589:666" ph="SELECT insti... user_settings" />
-            <marker date="1520180634958" expanded="true" signature="4432:4509" ph="SELECT insti... user_settings" />
-            <marker date="1520180634958" expanded="true" signature="6326:6403" ph="SELECT insti... user_settings" />
-            <marker date="1520180634958" expanded="true" signature="9928:9992" ph="UPDATE user_settings... " />
-            <marker date="1520180634958" expanded="true" signature="10412:10477" ph="UPDATE user_settings... " />
-            <marker date="1520180634958" expanded="true" signature="16692:16752" ph="SELECT user_... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="575:652" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="4418:4495" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="6312:6389" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="9914:9979" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="10399:10465" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="16680:16741" ph="SELECT user_... user_settings" />
           </folding>
         </state>
       </provider>
@@ -389,21 +700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <marker date="1520179168737" expanded="true" signature="1339:1380" ph="SELECT name institutes" />
-            <marker date="1520179168737" expanded="true" signature="2402:2542" ph="SELECT name group_names" />
-            <marker date="1520179168737" expanded="true" signature="2482:2527" ph="SELECT id FR... institutes" />
-            <marker date="1520179168737" expanded="true" signature="3635:3773" ph="SELECT name groups" />
-            <marker date="1520179168737" expanded="true" signature="3727:3772" ph="SELECT id FR... institutes" />
-            <marker date="1520179168737" expanded="true" signature="5175:5216" ph="SELECT id FR... groups" />
-            <marker date="1520179168737" expanded="true" signature="6632:6676" ph="select * fro... user_settings" />
-            <marker date="1520179168737" expanded="true" signature="7033:7246" ph="UPDATE user_settings... " />
-            <marker date="1520179168737" expanded="true" signature="7074:7157" ph="SELECT id FR... institutes" />
-            <marker date="1520179168737" expanded="true" signature="7303:7563" ph="INSERT INTO user_settings... " />
-            <marker date="1520179168737" expanded="true" signature="7492:7537" ph="SELECT id FR... institutes" />
-            <marker date="1520179168737" expanded="true" signature="9777:9834" ph="UPDATE user_settings... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -421,78 +717,64 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cron.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="49" column="4" lean-forward="false" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/cron.py" />
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="5" lean-forward="false" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/job.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="329" column="23" lean-forward="true" selection-start-line="329" selection-start-column="23" selection-end-line="329" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#14#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="505" column="0" lean-forward="true" selection-start-line="505" selection-start-column="0" selection-end-line="505" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <marker date="1520180634958" expanded="true" signature="589:666" ph="SELECT insti... user_settings" />
-            <marker date="1520180634958" expanded="true" signature="4432:4509" ph="SELECT insti... user_settings" />
-            <marker date="1520180634958" expanded="true" signature="6326:6403" ph="SELECT insti... user_settings" />
-            <marker date="1520180634958" expanded="true" signature="9928:9992" ph="UPDATE user_settings... " />
-            <marker date="1520180634958" expanded="true" signature="10412:10477" ph="UPDATE user_settings... " />
-            <marker date="1520180634958" expanded="true" signature="16692:16752" ph="SELECT user_... user_settings" />
-          </folding>
+        <state relative-caret-position="-1787">
+          <caret line="277" column="19" lean-forward="false" selection-start-line="277" selection-start-column="19" selection-end-line="277" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/handlers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-617">
-          <caret line="263" column="12" lean-forward="false" selection-start-line="263" selection-start-column="12" selection-end-line="263" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <marker date="1520179168737" expanded="true" signature="1339:1380" ph="SELECT name institutes" />
-            <marker date="1520179168737" expanded="true" signature="2402:2542" ph="SELECT name group_names" />
-            <marker date="1520179168737" expanded="true" signature="2482:2527" ph="SELECT id FR... institutes" />
-            <marker date="1520179168737" expanded="true" signature="3635:3773" ph="SELECT name groups" />
-            <marker date="1520179168737" expanded="true" signature="3727:3772" ph="SELECT id FR... institutes" />
-            <marker date="1520179168737" expanded="true" signature="5175:5216" ph="SELECT id FR... groups" />
-            <marker date="1520179168737" expanded="true" signature="6632:6676" ph="select * fro... user_settings" />
-            <marker date="1520179168737" expanded="true" signature="7033:7246" ph="UPDATE user_settings... " />
-            <marker date="1520179168737" expanded="true" signature="7074:7157" ph="SELECT id FR... institutes" />
-            <marker date="1520179168737" expanded="true" signature="7303:7563" ph="INSERT INTO user_settings... " />
-            <marker date="1520179168737" expanded="true" signature="7492:7537" ph="SELECT id FR... institutes" />
-            <marker date="1520179168737" expanded="true" signature="9777:9834" ph="UPDATE user_settings... " />
-          </folding>
+        <state relative-caret-position="4965">
+          <caret line="336" column="13" lean-forward="false" selection-start-line="336" selection-start-column="13" selection-end-line="336" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/telebot/types.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-539">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/telebot/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3287">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/telebot/apihelper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="866" column="15" lean-forward="false" selection-start-line="866" selection-start-column="8" selection-end-line="866" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="105">
+          <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -501,11 +783,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/update.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+        <state relative-caret-position="210">
+          <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <marker date="1520181601174" expanded="true" signature="382:427" ph="SELECT user_... user_settings" />
+            <marker date="1520442311576" expanded="true" signature="398:443" ph="SELECT user_... user_settings" />
+            <marker date="1520442311576" expanded="true" signature="398:487" ph="SELECT user_... user_settings" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="504" column="17" lean-forward="true" selection-start-line="504" selection-start-column="17" selection-end-line="504" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1520448568622" expanded="true" signature="575:652" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="4418:4495" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="6312:6389" ph="SELECT insti... user_settings" />
+            <marker date="1520448568622" expanded="true" signature="9914:9979" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="10399:10465" ph="UPDATE user_settings... " />
+            <marker date="1520448568622" expanded="true" signature="16680:16741" ph="SELECT user_... user_settings" />
           </folding>
         </state>
       </provider>
