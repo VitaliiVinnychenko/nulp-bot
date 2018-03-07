@@ -181,7 +181,10 @@ def show_tomorrow_schedule(message, local_bot=bot):
     else:
         user_id = message.chat.id
 
-    local_bot.send_chat_action(user_id, 'typing')
+    try:
+        local_bot.send_chat_action(user_id, 'typing')
+    except:
+        return
 
     with db_conn.cursor() as cur:
         sql_query = 'SELECT institute_id, group_id, subgroup FROM user_settings WHERE user_id = {}'
@@ -495,7 +498,7 @@ if __name__ == "__main__":
         jq.run_daily(
             callback=send_schedule,
             days=(Days.MON, Days.TUE, Days.WED, Days.THU, Days.SUN),
-            time=datetime.time(19, 20, 0)
+            time=datetime.time(19, 0, 0)
         )
 
         jq.start()
