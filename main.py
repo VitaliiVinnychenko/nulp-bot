@@ -495,11 +495,11 @@ if __name__ == "__main__":
         jq.run_daily(
             callback=send_schedule,
             days=(Days.MON, Days.TUE, Days.WED, Days.THU, Days.SUN),
-            time=datetime.time(19, 00, 00)
+            time=datetime.time(19, 20, 0)
         )
 
         jq.start()
 
         bot.polling(none_stop=True)
-    except:
+    finally:
         jq.stop()
