@@ -92,8 +92,29 @@ def get_schedule(institute_id, group_id):
     soup = BeautifulSoup(response.content, 'html.parser')
 
     schedule_items = soup.select('#stud > table.outer > tr')[1:]
-    schedule = []
+    res = soup.select('#stud')[0].find_all('td', {'rowspan': re.compile(r".*"), 'class': 'leftcell'})
+
     day = -1
+    weekdays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт']
+
+    if len(res) == 5:
+        schedule = [{}] * 5
+    else:
+        schedule = []
+        i = 0
+        j = 0
+
+        while j != 5:
+            if i == j and len(res) == i + 1:
+                schedule += [{}] + [None] * (5 - i - 1)
+                break
+            elif weekdays[j] == res[i].text:
+                schedule.append({})
+                i += 1
+                j += 1
+            else:
+                schedule.append(None)
+                j += 1
 
     for item in schedule_items:
 
@@ -102,11 +123,13 @@ def get_schedule(institute_id, group_id):
 
             if item.has_attr('style'):
                 day += 1
-                schedule.append({})
 
             line_number = root.find_previous_sibling('td').text
 
-            schedule[day][get_text(line_number)] = get_object(root.select('table tr'))
+            if schedule[day] is not None:
+                schedule[day][get_text(line_number)] = get_object(root.select('table tr'))
+            else:
+                day += 1
 
     redis_db.setex(str(institute_id) + '-' + str(group_id), 518400, json.dumps({'schedule': schedule}))
 

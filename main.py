@@ -32,6 +32,8 @@ def show_week_schedule(message, week='thisWeek', d=0):
             bot.send_message(message.chat.id, messages['noUser'], reply_markup=keyboard, parse_mode='Markdown')
         else:
             response = response[0]
+            index = 0
+
             data = redis_db.get(str(response[0]) + '-' + str(response[1]))
 
             if data is None:
@@ -45,13 +47,14 @@ def show_week_schedule(message, week='thisWeek', d=0):
                 + (end_date + datetime.timedelta(days=1)).strftime("%d.%m")
             )
 
-            index = 0
             for i in data:
-                i = collections.OrderedDict(sorted(i.items()))
+                if i is not None:
+                    i = collections.OrderedDict(sorted(i.items()))
 
-                response_message += '\n\n\n' + days[index].upper() + ' ' + \
-                                    (start_date + datetime.timedelta(days=index + 1)).strftime("(%d.%m)")
-                response_message += generate_schedule_message(i, response[2], week)
+                    response_message += '\n\n\n' + days[index].upper() + ' ' + \
+                                        (start_date + datetime.timedelta(days=index + 1)).strftime("(%d.%m)")
+                    response_message += generate_schedule_message(i, response[2], week)
+
                 index += 1
 
             delete_message(message)
@@ -140,13 +143,9 @@ def show_today_schedule(message):
         response = response[0]
         weekday = datetime.datetime.today().weekday()
 
-        keyboard = InlineKeyboardMarkup()
-
-        for item in main_menu:
-            keyboard.add(InlineKeyboardButton(text=item['name'], callback_data=item['value']))
-
         if weekday == 5 or weekday == 6:
             delete_message(message)
+
             bot.send_message(
                 chat_id=message.chat.id,
                 text=messages['todayIsWeekend'],
@@ -160,6 +159,15 @@ def show_today_schedule(message):
                 data = get_schedule(response[0], response[1])[weekday]
             else:
                 data = json.loads(data.decode('utf-8'))['schedule'][weekday]
+
+            if data is None:
+                bot.send_message(
+                    chat_id=message.chat.id,
+                    text=messages['todayIsWeekend'],
+                    parse_mode='Markdown',
+                    reply_markup=keyboard
+                )
+                return
 
             data = collections.OrderedDict(sorted(data.items()))
 
@@ -200,11 +208,6 @@ def show_tomorrow_schedule(message, local_bot=bot):
             response = response[0]
             weekday = (datetime.datetime.today() + datetime.timedelta(days=1)).weekday()
 
-            keyboard = InlineKeyboardMarkup()
-
-            for item in main_menu:
-                keyboard.add(InlineKeyboardButton(text=item['name'], callback_data=item['value']))
-
             if weekday == 5 or weekday == 6:
                 if type(message) != int:
                     delete_message(message)
@@ -222,6 +225,17 @@ def show_tomorrow_schedule(message, local_bot=bot):
                     data = get_schedule(response[0], response[1])[weekday]
                 else:
                     data = json.loads(data.decode('utf-8'))['schedule'][weekday]
+
+                if data is None:
+                    if type(message) != int:
+                        local_bot.send_message(
+                            chat_id=user_id,
+                            text=messages['tomorrowIsWeekend'],
+                            parse_mode='Markdown',
+                            reply_markup=keyboard
+                        )
+
+                    return
 
                 data = collections.OrderedDict(sorted(data.items()))
 
