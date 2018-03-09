@@ -96,13 +96,13 @@ def get_schedule(institute_id, group_id):
 
     day = -1
     weekdays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт']
+    schedule = []
 
     if len(res) == 5:
-        schedule = [{}] * 5
+        for i in range(5):
+            schedule.append({})
     else:
-        schedule = []
-        i = 0
-        j = 0
+        i = 0; j = 0
 
         while j != 5:
             if i == j and len(res) == i + 1:

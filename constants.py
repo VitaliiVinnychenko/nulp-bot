@@ -4,7 +4,7 @@ import redis
 token = '422552467:AAFt-9mIGk8nh_IuHqQmMJkM9ZDGyj7rVdU'
 base_url = 'http://www.lp.edu.ua/rozklad-dlya-studentiv'
 db_conn = psycopg2.connect(dbname='nulp_bot', user='nulp_bot', host='nulpbot.ckclwywyrho2.eu-central-1.rds.amazonaws.com', password='nulp_bot')
-redis_db = redis.StrictRedis(host='nulpbot.ihnlu8.ng.0001.euc1.cache.amazonaws.com')
+redis_db = redis.StrictRedis(host='nulptelegram.ihnlu8.ng.0001.euc1.cache.amazonaws.com')
 
 updateMessage = '*Псссс, {}. Я тут підучив деякі нові фішки*😏\n\n' \
                 'Тепер я вмію робити сальтушку і сідати на шпагат! Круто?\n\n'\
