@@ -6,7 +6,7 @@ base_url = 'http://www.lp.edu.ua/rozklad-dlya-studentiv'
 db_conn = psycopg2.connect(dbname='nulp_bot', user='nulp_bot', host='nulpbot.ckclwywyrho2.eu-central-1.rds.amazonaws.com', password='nulp_bot')
 redis_db = redis.StrictRedis(host='null-bot.ihnlu8.ng.0001.euc1.cache.amazonaws.com')
 
-updateMessage = '*Псссс, {}*😏\n\n' \
+updateMessage = '*Псссс, {}*\n\n' \
                 'Якщо є якісь пропозиції або бажаєш просто подякувати за бота, пиши цьому хлопчині - @vinyunya \n\n' \
                 '*P.S. Також не забувай розповідати про мене своїм одногрупникам/одногрупницям та друзям😉*'
 

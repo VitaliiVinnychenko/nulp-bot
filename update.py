@@ -10,7 +10,7 @@ if __name__ == '__main__':
     counter = 0
 
     with db_conn.cursor() as cur:
-        sql_query = 'SELECT user_id, first_name FROM user_settings WHERE created_at >= \'2018-03-11 21:02:00\';'
+        sql_query = 'SELECT user_id, first_name FROM user_settings WHERE created_at >= \'2018-03-18 15:00:00\';'
         cur.execute(sql_query)
 
         for i in cur:
