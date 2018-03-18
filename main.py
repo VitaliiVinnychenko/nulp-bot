@@ -259,22 +259,12 @@ def show_tomorrow_schedule(message, local_bot=bot):
 
 @bot.message_handler(commands=['week'])
 def show_this_week_schedule(message):
-    weekday = datetime.datetime.today().weekday()
-
-    if weekday == 6 or weekday == 5:
-        show_week_schedule(message, 'nextWeek', 7)
-    else:
-        show_week_schedule(message)
+    show_week_schedule(message)
 
 
 @bot.message_handler(commands=['nextweek'])
 def show_next_week_schedule(message):
-    weekday = datetime.datetime.today().weekday()
-
-    if weekday == 6 or weekday == 5:
-        show_week_schedule(message, 'nextWeek', 7)
-    else:
-        show_week_schedule(message, 'nextWeek', 7)
+    show_week_schedule(message, 'nextWeek', 7)
 
 
 @bot.message_handler(commands=['settings'])
