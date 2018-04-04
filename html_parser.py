@@ -131,6 +131,4 @@ def get_schedule(institute_id, group_id):
             else:
                 day += 1
 
-    redis_db.setex(str(institute_id) + '-' + str(group_id), 43200, json.dumps({'schedule': schedule}))
-
     return schedule

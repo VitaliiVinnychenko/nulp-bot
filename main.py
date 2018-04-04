@@ -34,12 +34,7 @@ def show_week_schedule(message, week='thisWeek', d=0):
             response = response[0]
             index = 0
 
-            data = redis_db.get(str(response[0]) + '-' + str(response[1]))
-
-            if data is None:
-                data = get_schedule(response[0], response[1])
-            else:
-                data = json.loads(data.decode('utf-8'))['schedule']
+            data = get_schedule(response[0], response[1])
 
             start_date, end_date = week_range(datetime.datetime.today() + datetime.timedelta(days=d))
             response_message = messages[week + 'Schedule'].format(
@@ -156,12 +151,7 @@ def show_today_schedule(message):
                 reply_markup=keyboard
             )
         else:
-            data = redis_db.get(str(response[0]) + '-' + str(response[1]))
-
-            if data is None:
-                data = get_schedule(response[0], response[1])[weekday]
-            else:
-                data = json.loads(data.decode('utf-8'))['schedule'][weekday]
+            data = get_schedule(response[0], response[1])[weekday]
 
             if data is None:
                 bot.send_message(
@@ -222,12 +212,7 @@ def show_tomorrow_schedule(message, local_bot=bot):
                     reply_markup=keyboard
                 )
             else:
-                data = redis_db.get(str(response[0]) + '-' + str(response[1]))
-
-                if data is None:
-                    data = get_schedule(response[0], response[1])[weekday]
-                else:
-                    data = json.loads(data.decode('utf-8'))['schedule'][weekday]
+                data = get_schedule(response[0], response[1])[weekday]
 
                 if data is None:
                     if type(message) != int:
